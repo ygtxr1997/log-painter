@@ -1,0 +1,61 @@
+
+
+#view_tools{
+    width: 330px; 
+    height: 30px; 
+    background-color: white; 
+    position: fixed; 
+    bottom: 3%; 
+    right: 3%;
+    z-index: 998;
+}
+
+.viewButton{
+    width: 26px;
+    height: 26px;
+    background-color: aquamarine;
+    position: relative;
+    margin-top: 2px;
+    margin-left: 2px;
+    padding: 0px;
+    background-position: center;
+}
+
+#viewUp{
+    margin-left: 4px;
+    background-image: url("../img/arrow-up.png");
+}
+#viewDown{
+    background-image: url("../img/arrow-down.png");
+}
+#viewLeft{
+    background-image: url("../img/arrow-left.png");
+}
+#viewRight{
+    background-image: url("../img/arrow-right.png");
+}
+#viewBig{
+    background-image: url("../img/plus.png");
+}
+#viewSmall{
+    background-image: url("../img/minus.png");
+}
+#viewHExpand{
+    background-image: url("../img/horizontal-expand.png");
+}
+#viewHShrink{
+    background-image: url("../img/horizontal-squize.png");
+}
+#viewVExpand{
+    background-image: url("../img/vertical-expand.png");
+}
+#viewVShrink{
+    background-image: url("../img/vertical-squize.png");
+}
+
+/* #board{
+    width: 800px;
+    height: 600px;
+    
+    background-color: darkkhaki;
+} */
