@@ -21,8 +21,8 @@ class MatchTarget {
 
     addNum(num) {
         this.arr.push(num);
-        this.arr.min = this.arr.min < num ? this.arr.min : num;
-        this.arr.max = this.arr.max > num ? this.arr.max : num;
+        this.min = this.min < num ? this.min : num;
+        this.max = this.max > num ? this.max : num;
     }
 
     size() {
@@ -277,6 +277,76 @@ window.onload = resize;
 window.onresize = resize;
 
 
+// 读取文件
+/** @type {String} */
+var content;
+var readFile = document.getElementById('readFile');
+readFile.addEventListener('change', handleReadFile, false);
+function handleReadFile(evt) {
+    var files = evt.target.files;
+    if(files[0])
+    {
+        var reader = new FileReader();
+        reader.readAsText(files[0]);
+        reader.onload = function(evt) {
+            content = evt.target.result;
+            extractValueByPatternTarget(".*Q dl.*", "");
+        };
+    }
+}
+
+/**
+ * 循环逐行读取文本内容
+ * 
+ * @return  {String}   true:还未结束;false:到达终点
+ */
+function readLineLoop() {
+    var start = pos;
+    while (content.charAt(pos) != '\n')
+    {
+        pos++;
+    }
+
+    if (pos == content.length - 1)
+    {
+        return "";
+    }
+
+    var end = pos;
+    var line = content.substring(start, end);
+
+    if (!line)
+    {
+        return "NULL";
+    }
+
+    return line;
+}
+/**
+ * 根据匹配模式读取目标值
+ *
+ * @param  {String}     pattern     匹配模式
+ * @param  {String}     target      目标关键词
+ * @return 空值
+ */
+var pos = 0;
+function extractValueByPatternTarget(pattern, target) {
+    var index = 0, line = "";
+    let reg = new RegExp(pattern);
+    while(line = readLineLoop())
+    {
+        // 匹配
+        if (reg.test(line))
+        {
+            console.log("" + index + ":" + line.charAt(0));
+        }
+
+        pos++;
+        index++;
+    }
+}
+
+
 //生成从minNum到maxNum的随机数
 function randomNum(minNum,maxNum){ 
     switch(arguments.length){ 
@@ -290,10 +360,13 @@ function randomNum(minNum,maxNum){
                 return 0; 
             break; 
     } 
-} 
+}
+var kMin = 800, kMax = 5000; 
 function test() {
-    var newNum = randomNum(800, 5000);
+    var newNum = randomNum(kMin, kMax);
     obj.addNum(newNum);
     resize();
+    kMin += 50;
+    kMax += 50;
 }
-window.setInterval("test()", 1000);
+// window.setInterval("test()", 100);
