@@ -15,13 +15,28 @@
     width: 20%;
 }
 
-#board{
+#canvas-wrapper{
+    position: fixed;
     width: 720px;
     height: 540px;
-    background-color: darkkhaki;
-    position: relative;
-    top: 15%;
-    left: 23%;
+    top: 18%;
+    left: 34%;
+}
+.canvas{
+    width : 720px;
+    height : 540px;
+    position: absolute;
+}
+#grid{
+    background-color: white;
+    top: 0;
+    left: 0;
+    opacity: 0.4;
+}
+#board{
+    background-color: gainsboro;
+    top: 0;
+    left: 0;
 }
 
 #view_tools{
